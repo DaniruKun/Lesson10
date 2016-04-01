@@ -1,33 +1,39 @@
 import java.util.Scanner;
-
+import java.util.regex.Pattern;
 public class PatternTest {
-
 	public static void main(String[] args) {
 		char complete;
+		String input;
+		Pattern email = Pattern.compile("\\w+@\\w+.\\w+"); //email check pattern
 		Scanner scanner = new Scanner(System.in);
-		Human human = new Human();
 		sout("Please enter your age\n");
 		int age = scanner.nextInt(); //pattern scan for integer
 		if (age < 18) {
 			sout("Access is denied");
 		}
-		
+
 		else {
-			do {
+			
 			Human.age = age;
 			sout("Please enter your name");
 			Human.name = scanner.nextLine();
-			scanner.nextInt();
+			do {
+				sout("Please enter your email");
+				input = scanner.nextLine();
+			}
+			while (!Pattern.matches("\\w+@\\w+.\\w+", input));
+			Human.email = input;
+			
+			
 			sout("Enter your hentai preference");
 			Human.pref = scanner.nextLine();
-			scanner.nextLine();
+		
 			printID();
-			sout("Is the above information correct? (y/n)");
-			complete = scanner.nextLine().charAt(0); 
-			} while (complete != 'y');
+			
 		scanner.close();
 		}
 	}
+	
 	public static void sout(String s) {
 		System.out.println(s);
 	}
@@ -38,5 +44,4 @@ public class PatternTest {
 		System.out.print("Age:");
 		sout(Integer.toString(Human.age));
 	}
-
 }
