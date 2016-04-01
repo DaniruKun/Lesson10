@@ -2,14 +2,12 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 public class PatternTest {
 	public static void main(String[] args) {
-		char complete;
 		String input;
-		Pattern email = Pattern.compile("\\w+@\\w+.\\w+"); //email check pattern
 		Scanner scanner = new Scanner(System.in);
 		sout("Please enter your age");
-		int age = scanner.nextInt();
-		scanner.nextLine();//pattern scan for integer
-		if (age < 18) {  //checks name
+		int age = scanner.nextInt();  //fetches age
+		scanner.nextLine();
+		if (age < 18) {  //checks age
 			sout("Access is denied");
 		}
 		else {
