@@ -6,42 +6,41 @@ public class PatternTest {
 		String input;
 		Pattern email = Pattern.compile("\\w+@\\w+.\\w+"); //email check pattern
 		Scanner scanner = new Scanner(System.in);
-		sout("Please enter your age\n");
-		int age = scanner.nextInt(); //pattern scan for integer
-		if (age < 18) {
+		sout("Please enter your age");
+		int age = scanner.nextInt();
+		scanner.nextLine();//pattern scan for integer
+		if (age < 18) {  //checks name
 			sout("Access is denied");
 		}
-
 		else {
-			
-			Human.age = age;
+			Human.age = age; //writes age
 			sout("Please enter your name");
-			Human.name = scanner.nextLine();
+			Human.name = scanner.nextLine();  //writes name
 			do {
 				sout("Please enter your email");
 				input = scanner.nextLine();
 			}
-			while (!Pattern.matches("\\w+@\\w+.\\w+", input));
+			while (!Pattern.matches("\\w+@\\w+\\.\\w+", input)); //email pattern check
 			Human.email = input;
-			
-			
-			sout("Enter your hentai preference");
-			Human.pref = scanner.nextLine();
-		
+			sout("Enter your hentai preference");  
+			Human.pref = scanner.nextLine();  //writes hentai preference
 			printID();
-			
 		scanner.close();
 		}
 	}
 	
-	public static void sout(String s) {
+	public static void sout(String s) {  //makes your life easier
 		System.out.println(s);
 	}
 	
-	public static void printID() {
+	public static void printID() {  //prints your details
 		System.out.print("Name:");
 		sout(Human.name);
 		System.out.print("Age:");
 		sout(Integer.toString(Human.age));
+		System.out.print("Email:");
+		sout(Human.email);
+		System.out.print("Hentai preference:");
+		sout(Human.pref);
 	}
 }
